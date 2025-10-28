@@ -3,31 +3,52 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Georgia', serif;
-  background-color: #121212;
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
+  background-size: 400% 400%;
+  animation: neonPulse 15s ease infinite;
   color: #e0e0e0;
   line-height: 1.6;
+}
+
+/* Neon Gradient Animation */
+@keyframes neonPulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 50px 20px;
-  background-color: #1f1f1f;
+  padding: 60px 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
 }
 
+/* Neon Profile Pic */
 .profile-pic {
   width: 140px;
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
-  border: 2px solid #444;
+  border: 2px solid #0ff;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  transition: transform 0.3s ease;
 }
 
-.tagline {
-  font-style: italic;
-  font-size: 1.2em;
-  color: #ccc;
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+/* Neon Text */
+h1, h2 {
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #0ff,
+    0 0 20px #0ff,
+    0 0 40px #0ff;
 }
 
 /* Section Styling */
@@ -35,13 +56,23 @@ section {
   padding: 40px 20px;
   max-width: 800px;
   margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 0 15px #0ff;
 }
 
-h2 {
-  border-bottom: 1px solid #444;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  color: #ffffff;
+/* Neonphorism Card Style */
+.project, .skills li {
+  background: #1a1a1a;
+  border-radius: 15px;
+  box-shadow:
+    0 0 10px #0ff,
+    inset 0 0 10px #0ff;
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: scale(1.02);
 }
 
 /* Skills */
@@ -50,27 +81,39 @@ h2 {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .skills li {
-  background-color: #2a2a2a;
   margin: 5px;
   padding: 10px 15px;
-  border-radius: 5px;
   font-size: 0.95em;
+  opacity: 0;
+  transition: background-color 0.3s ease, opacity 0.6s ease-in-out;
 }
 
-/* Projects */
-.project {
-  background-color: #1a1a1a;
-  padding: 20px;
-  margin-top: 20px;
-  border-left: 5px solid #007acc;
+.skills li:hover {
+  background-color: #222;
 }
 
-.project a {
-  color: #80dfff;
-  text-decoration: none;
+/* Glowing Border Animation for Philosophy Section */
+.philosophy {
+  position: relative;
+  border: 4px solid transparent;
+  border-radius: 12px;
+  animation: glowBorder 4s linear infinite;
+}
+
+@keyframes glowBorder {
+  0% {
+    border-image: linear-gradient(to right, #ff00cc, #00ffff) 1;
+  }
+  50% {
+    border-image: linear-gradient(to right, #00ffff, #ffcc00) 1;
+  }
+  100% {
+    border-image: linear-gradient(to right, #ffcc00, #ff00cc) 1;
+  }
 }
 
 /* Contact */
@@ -82,13 +125,53 @@ h2 {
   margin-right: 15px;
   color: #80dfff;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #ffffff;
 }
 
 /* Footer */
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #1f1f1f;
+  background-color: rgba(0, 0, 0, 0.6);
   color: #aaa;
   font-size: 0.9em;
+  box-shadow: 0 0 10px #0ff;
 }
+
+/* Fade-in animation */
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .skills ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+
+  section {
+    padding: 30px 15px;
+  }
+    }
